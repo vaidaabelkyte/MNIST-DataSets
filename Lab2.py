@@ -43,3 +43,9 @@ def print_image_from_data(dataArray,image_number):  # takes the array from input
 images = read_images_from_file('data/train-images-idx3-ubyte.gz')
 lables = read_lables_from_file("data/train-labels-idx1-ubyte.gz")
 print_image_from_data(images,2)  # third image in the array has number 2
+input("Press Enter to create files from set")
+for i in range(len(lables)):  # saves images to files in subfolder 
+    im = Image.fromarray(images[i])
+    im.save("subfolder/train-{:05d}-{:}.png".format(i,lables[i]))  # generated from the number the label
+    print("File 'train-{:05d}-{:}.png' had been created in subfolder".format(i,lables[i]))
+
